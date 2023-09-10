@@ -1,10 +1,16 @@
-import { AgenstDetail, ChildrenProps, TplanDetail } from "@/schemas";
+import {
+  AgenstDetail,
+  ChildrenProps,
+  TCustomerDetail,
+  TplanDetail,
+} from "@/schemas";
 import useLocalStorage from "@/utils/useLocalstorage";
 import React, { createContext, useContext } from "react";
 
 type FormsDetails = {
   agentdetail?: AgenstDetail;
   plan?: TplanDetail;
+  customer?: TCustomerDetail;
 };
 
 type ContextForm = {

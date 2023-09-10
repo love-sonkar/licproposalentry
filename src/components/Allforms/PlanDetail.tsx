@@ -36,11 +36,12 @@ const PlanDetail: React.FC = () => {
   });
 
   const plansubmit: SubmitHandler<TplanDetail> = (data) => {
-    setData((prev) => ({ ...prev, plan: { ...data, plandata } }));
+    setData((prev) => ({ ...prev, plan: { ...data, plandata, mode } }));
     navigate("/detailspage");
   };
 
   const [plandata, setPlanData] = useState<string>("Jeevan Kiran 870");
+  const [mode, setMode] = useState<string>("Yearly");
 
   const handle = (e: string) => {
     setPlanData(e);
@@ -52,7 +53,7 @@ const PlanDetail: React.FC = () => {
         <div className="flex flex-col gap-3">
           <div className="grid w-full  items-center gap-1.5">
             <Label htmlFor="Plannumber">Plan Number</Label>
-            <Select value={plandata} onValueChange={handle}>
+            <Select onValueChange={handle}>
               <SelectTrigger>
                 <SelectValue placeholder={plandata} />
               </SelectTrigger>
@@ -69,24 +70,42 @@ const PlanDetail: React.FC = () => {
             </Select>
           </div>
           <div className="grid w-full  items-center gap-1.5">
-            <Label htmlFor="agentcode">Term </Label>
+            <Label htmlFor="term">Term </Label>
             <Input
               {...register("term")}
-              id="agentcode"
-              type="string"
+              id="term"
+              type="text"
               placeholder="Term "
             />
             <Errors>{errors?.term?.message}</Errors>
           </div>
 
           <div className="grid w-full  items-center gap-1.5">
-            <Label htmlFor="agentcode">Sum Assaurd</Label>
+            <Label htmlFor="sumassaurd">Sum Assaurd</Label>
             <Input
               {...register("sumassuard")}
-              type="string"
+              id="sumassaurd"
+              type="text"
               placeholder="Sum Assurd"
             />
             <Errors>{errors?.sumassuard?.message}</Errors>
+          </div>
+
+          <div className="grid w-full  items-center gap-1.5">
+            <Label htmlFor="paymentmode">Payment Mode</Label>
+            <Select onValueChange={(e: string) => setMode(e)}>
+              <SelectTrigger>
+                <SelectValue placeholder={mode} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>{mode}</SelectLabel>
+                  <SelectItem value="Halfyearly">Halfyearly</SelectItem>
+                  <SelectItem value="Quarterly">Quarterly</SelectItem>
+                  <SelectItem value="Monthly">Monthly</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </div>
 
           <Button type="submit">Submit</Button>

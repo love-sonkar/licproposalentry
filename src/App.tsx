@@ -26,18 +26,18 @@ function App() {
             }
           />
           <Route
-            path="/plandetail"
-            element={
-              <Wrapper>
-                <PlanDetail />
-              </Wrapper>
-            }
-          />
-          <Route
             path="/customerdetail"
             element={
               <Wrapper>
                 <CustomerDetail />
+              </Wrapper>
+            }
+          />
+          <Route
+            path="/plandetail"
+            element={
+              <Wrapper>
+                <PlanDetail />
               </Wrapper>
             }
           />

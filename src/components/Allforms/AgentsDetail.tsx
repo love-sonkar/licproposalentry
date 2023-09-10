@@ -23,7 +23,7 @@ const AgentsDetail: React.FC = () => {
 
   const agentSubmit: SubmitHandler<AgenstDetail> = (data) => {
     setData((prev) => ({ ...prev, agentdetail: data }));
-    navigate("/plandetail");
+    navigate("/customerdetail");
   };
 
   return (

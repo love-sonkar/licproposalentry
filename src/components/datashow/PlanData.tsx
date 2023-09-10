@@ -9,7 +9,19 @@ const PlanData: React.FC = () => {
 
   return (
     <WrapperData>
-      <h2>Plan Number : {plan?.term}</h2>
+      <h1 className="text-2xl font-semibold mb-4">Plan Detail's</h1>
+      <h2>
+        Plan : <strong>{plan?.plandata}</strong>
+      </h2>
+      <h2>
+        Plan Term : <strong>{plan?.term}</strong>
+      </h2>
+      <h2>
+        Plan SumAssaurd : <strong>{plan?.sumassuard}</strong>
+      </h2>
+      <h2>
+        Payment Mode : <strong>{plan?.mode}</strong>
+      </h2>
     </WrapperData>
   );
 };

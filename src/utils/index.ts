@@ -1,5 +1,7 @@
 export const PlanNumber = [
+  { id: 1, name: "Bima Jyoti 860" },
   { id: 2, name: "Dhan Sanchay 865" },
+  { id: 12, name: "Jeevan Azad 868" },
   { id: 3, name: "Dhan Vriddhi 869" },
   { id: 4, name: "New Endowment 914" },
   { id: 5, name: "Jeevan Anand 915" },
@@ -7,4 +9,8 @@ export const PlanNumber = [
   { id: 7, name: "Jeevan Lakshya 933" },
   { id: 8, name: "Jeevan Labh 936" },
   { id: 9, name: "Aadhaar Stambh 943" },
+  { id: 10, name: "Aadhaar Shila 944" },
+  { id: 13, name: "Jeevan Umang 945" },
+  { id: 11, name: "Micro Bachat 951" },
+  { id: 14, name: "Money Back 920" },
 ];

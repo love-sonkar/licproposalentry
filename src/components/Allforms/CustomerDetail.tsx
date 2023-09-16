@@ -31,7 +31,7 @@ const CustomerDetail: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submitfunction)}>
+    <form onSubmit={handleSubmit(submitfunction)} noValidate>
       <CardForm title="Customer Detail" description="Please Fill All">
         <div className="flex flex-col gap-3">
           <div className="grid w-full  items-center gap-1.5">
@@ -98,6 +98,18 @@ const CustomerDetail: React.FC = () => {
               placeholder="Phone number"
             />
             <Errors>{errors?.number?.message}</Errors>
+          </div>
+          <div className="grid w-full  items-center gap-1.5">
+            <Label className="text-xl " htmlFor="email">
+              Email id
+            </Label>
+            <Input
+              {...register("email")}
+              id="email"
+              type="email"
+              placeholder="Email id"
+            />
+            <Errors>{errors?.email?.message}</Errors>
           </div>
           <Button type="submit">Submit</Button>
         </div>

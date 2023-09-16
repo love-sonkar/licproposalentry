@@ -1,8 +1,8 @@
 import React from "react";
 import { z } from "zod";
 
-const NumberRegex = new RegExp(/[1-9][0-9]+$/);
-const refineNumber = /^[1-9][0-9]+$/;
+const NumberRegex = new RegExp(/[0-9][0-9]+$/);
+const refineNumber = /^[0-9][0-9]+$/;
 
 export type ChildrenProps = {
   children: React.ReactNode;
@@ -15,7 +15,14 @@ export type AgenstDetail = {
 
 export const AgentsSchema: z.ZodType<AgenstDetail> = z.object({
   name: z.string().trim().min(1, { message: "please Enter Name" }),
-  code: z.string().trim().min(4, { message: "Please enter proper code" }),
+  code: z
+    .string()
+    .trim()
+    .min(4, { message: "Please enter proper code" })
+    .regex(NumberRegex, { message: "Not a valid Agent Code" })
+    .refine((value) => refineNumber.test(value), {
+      message: "Please Provide Number Only",
+    }),
 });
 
 export type TplanDetail = {
@@ -26,8 +33,22 @@ export type TplanDetail = {
 };
 
 export const PlanSchema: z.ZodType<TplanDetail> = z.object({
-  term: z.string().trim().min(2, { message: "Please enter Term" }),
-  sumassuard: z.string().trim().min(4, { message: "Please enter Sum assaurd" }),
+  term: z
+    .string()
+    .trim()
+    .min(2, { message: "Please enter Term" })
+    .regex(NumberRegex, { message: "Not a valid term" })
+    .refine((value) => refineNumber.test(value), {
+      message: "Please Provide Number Only",
+    }),
+  sumassuard: z
+    .string()
+    .trim()
+    .min(4, { message: "Please enter Sum assaurd" })
+    .regex(NumberRegex, { message: "Not a SumAssaurd term" })
+    .refine((value) => refineNumber.test(value), {
+      message: "Please Provide Number Only",
+    }),
 });
 
 export type TCustomerDetail = {
@@ -36,6 +57,7 @@ export type TCustomerDetail = {
   address: string;
   aadhar: string;
   number: string;
+  email?: string | null;
 };
 
 export const CustomerSchema: z.ZodType<TCustomerDetail> = z.object({
@@ -57,4 +79,5 @@ export const CustomerSchema: z.ZodType<TCustomerDetail> = z.object({
     .refine((value) => refineNumber.test(value), {
       message: "Please Provied Number Only",
     }),
+  email: z.union([z.string().email(), z.undefined()]),
 });

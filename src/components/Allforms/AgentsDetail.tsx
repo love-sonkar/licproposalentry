@@ -45,7 +45,8 @@ const AgentsDetail: React.FC = () => {
             <Input
               {...register("code")}
               id="agentcode"
-              type="number"
+              type="tel"
+              maxLength={8}
               placeholder="Agent Code"
             />
             {<Errors>{errors.code?.message}</Errors>}

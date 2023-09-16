@@ -74,7 +74,8 @@ const PlanDetail: React.FC = () => {
             <Input
               {...register("term")}
               id="term"
-              type="text"
+              type="tel"
+              maxLength={5}
               placeholder="Term "
             />
             <Errors>{errors?.term?.message}</Errors>
@@ -85,7 +86,7 @@ const PlanDetail: React.FC = () => {
             <Input
               {...register("sumassuard")}
               id="sumassaurd"
-              type="text"
+              type="tel"
               placeholder="Sum Assurd"
             />
             <Errors>{errors?.sumassuard?.message}</Errors>
